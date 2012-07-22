@@ -1,5 +1,7 @@
 # Munin-node module
 
+[![Build Status](https://secure.travis-ci.org/antonlindstrom/puppet-munin.png?branch=master)](http://travis-ci.org/antonlindstrom/puppet-munin)
+
 This is a module for managing munin-node on nodes.
 
 ### Usage
