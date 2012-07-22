@@ -1,0 +1,6 @@
+name 'antonl-munin'
+version '0.0.1'
+author 'Anton Lindström'
+summary 'Module for managing munin-node'
+description 'Installs and manages munin-node'
+license 'GPLv2'
