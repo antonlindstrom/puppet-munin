@@ -24,6 +24,16 @@ These are the settings that are currently available:
 
 note: `munin::config` is included with defaults when running `include munin`. Default values will be used.
 
+#### Plugins
+
+Plugins can be enabled and disabled using `munin::plugin`.
+
+    munin::plugin {
+        ['cpu', 'load']:
+            ensure => present,
+            #ensure => absent,
+    }
+
 ## Testing
 
     gem install bundler
