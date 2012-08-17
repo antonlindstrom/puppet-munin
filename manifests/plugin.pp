@@ -1,22 +1,37 @@
 define munin::plugin(
     $ensure      = 'present',
-    $script_path = '/usr/lib/munin/plugins',
+    $script_path = '',
     $config      = '')
 {
     $plugin      = "/etc/munin/plugins/${name}"
     $plugin_conf = "/etc/munin/plugin-conf.d/${name}.conf"
 
+    if $script_path {
+        $script_dir = $script_path
+    }
+    else {
+        $script_dir = $::operatingsystem ? {
+            'Archlinux' => '/usr/lib/munin/plugins',
+            default     => '/usr/share/munin/plugins',
+        }
+    }
+
     case $ensure {
         'absent': {
             file { $plugin: 
-                ensure => absent,
+                ensure => $ensure,
             }
         }
 
         default: {
+            $ensure_link = $ensure ? {
+                present => link,
+                default => $ensure,
+            }
+
             file { $plugin:
-                ensure  => link,
-                target  => "${script_path}/${name}",
+                ensure  => $ensure_link,
+                target  => "${script_dir}/${name}",
                 require => Class['munin::package'],
                 notify  => Class['munin::service'],
             }
@@ -34,7 +49,7 @@ define munin::plugin(
             case $ensure {
                 'absent': {
                     file { $plugin_conf:
-                        ensure => absent,
+                        ensure => $ensure,
                     }
                 }
 
