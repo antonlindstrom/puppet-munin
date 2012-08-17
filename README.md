@@ -1,8 +1,8 @@
 # Munin-node module
 
-[![Build Status](https://secure.travis-ci.org/antonlindstrom/puppet-munin.png?branch=master)](http://travis-ci.org/antonlindstrom/puppet-munin)
-
 This is a module for managing munin-node on nodes.
+
+Forked from https://github.com/antonlindstrom/puppet-munin.
 
 ### Usage
 
@@ -22,7 +22,17 @@ These are the settings that are currently available:
       pollers         => [ '^127\.0\.0\.1$' ],
     }
 
-note: `munin::config` is included with defaults when running `include munin`. You'll have to include `munin::package` and `munin::service` instead of just `munin` when editing config.
+note: `munin::config` is included with defaults when running `include munin`. Default values will be used.
+
+#### Plugins
+
+Plugins can be enabled and disabled using `munin::plugin`.
+
+    munin::plugin {
+        ['cpu', 'load']:
+            ensure => present,
+            #ensure => absent,
+    }
 
 ## Testing
 
