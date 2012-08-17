@@ -47,3 +47,8 @@ Run noop-tests:
 ## Contribute
 
 Send pull request and add tests. Make sure all tests pass (modify if you need) and make sure it's style-guide compliant.
+
+#### Contributors
+
+* Anton Lindström
+* Kane Mathers
