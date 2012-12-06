@@ -1,6 +1,7 @@
 define munin::plugin(
     $ensure      = 'present',
     $script_path = '',
+    $script_name = $name,
     $config      = '')
 {
   $plugin      = "/etc/munin/plugins/${name}"
@@ -22,7 +23,7 @@ define munin::plugin(
 
   file { $plugin:
     ensure  => $ensure_link,
-    target  => "${script_dir}/${name}",
+    target  => "${script_dir}/${script_name}",
     require => Class['munin::package'],
     notify  => Class['munin::service'],
   }
