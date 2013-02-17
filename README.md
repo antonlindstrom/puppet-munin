@@ -52,3 +52,4 @@ Send pull request and add tests. Make sure all tests pass (modify if you need) a
 
 * Anton Lindström
 * Kane Mathers
+* Stefan Jenkner
