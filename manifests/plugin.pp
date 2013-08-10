@@ -1,3 +1,7 @@
+# == Define: munin::plugin
+#
+# Sets up a new plugin for munin
+#
 define munin::plugin(
     $ensure      = 'present',
     $script_path = '',
