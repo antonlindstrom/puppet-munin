@@ -1,3 +1,7 @@
+# == Class: munin::service
+#
+# Ensures that munin-node is running
+#
 class munin::service ($ensure = 'present') {
 
   $ensure_service = $ensure ? {
