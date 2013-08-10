@@ -1,3 +1,7 @@
+# == Class: munin::config
+#
+# Sets up munin-node.conf
+#
 class munin::config(
     $ensure         = 'present',
     $listen_address = '*',
