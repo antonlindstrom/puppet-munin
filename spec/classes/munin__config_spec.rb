@@ -5,11 +5,20 @@ describe 'munin::config', :type => :class do
 
   it { should contain_file('munin-node.conf').with_ensure('present') }
 
-  it 'should contain passed variables in munin-node.conf' do
-    content = catalogue.resource('file', 'munin-node.conf').send(:parameters)[:content]
-    content =~ %r[host_name test\.example\.com]
-    content =~ %r[host \*]
-    content =~ %r[port 4949]
+  describe 'passed variables in munin-node.conf' do
+
+    it 'should contain passed var host_name' do
+      should contain_file('munin-node.conf').with_content(/host_name test\.example\.com/)
+    end
+
+    it 'should contain passed var host' do
+      should contain_file('munin-node.conf').with_content(/host \*/)
+    end
+
+    it 'should contain passed var port' do
+      should contain_file('munin-node.conf').with_content(/port 4949/)
+    end
+
   end
 
 end
