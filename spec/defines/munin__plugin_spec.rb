@@ -26,8 +26,7 @@ describe 'munin::plugin', :type => :define do
   describe 'specific content' do
     let(:params) { { :config => 'test' } }
     it 'should include plugin cpu' do
-      content = catalogue.resource('file', '/etc/munin/plugin-conf.d/cpu.conf').send(:parameters)[:content]
-      content.should match /cpu/
+      should contain_file('/etc/munin/plugin-conf.d/cpu.conf').with_content(/cpu/)
     end
   end
 
