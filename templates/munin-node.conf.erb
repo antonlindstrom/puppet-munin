@@ -20,11 +20,11 @@ ignore_file %$
 ignore_file \.dpkg-(tmp|new|old|dist)$
 ignore_file \.rpm(save|new)$
 ignore_file \.pod$
-<% ignore_files.each do |ignore| -%>
+<% @ignore_files.each do |ignore| -%>
 ignore_file <%= ignore %>
 <% end -%>
 
-host_name <%= fqdn %>
+host_name <%= @fqdn %>
 
 # A list of addresses that are allowed to connect.  This must be a
 # regular expression, since Net::Server does not understand CIDR-style
@@ -32,10 +32,10 @@ host_name <%= fqdn %>
 # may repeat the allow line as many times as you'd like
 
 allow ^127\.0\.0\.1$
-<% pollers.each do |poller| -%>
+<% @pollers.each do |poller| -%>
 allow <%= poller %>
 <% end -%>
 
 # Which address to bind to;
-host <%= listen_address %>
-port <%= listen_port %>
+host <%= @listen_address %>
+port <%= @listen_port %>
